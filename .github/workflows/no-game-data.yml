@@ -1,0 +1,44 @@
+name: No game data
+
+# Fails any push or PR that adds ROMs, original assets or decompile workspaces,
+# even if someone force-adds them past .gitignore.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject ROMs, assets and decompile folders
+        run: |
+          bad=$(git ls-files | grep -Ei \
+            -e '\.(z64|n64|v64|rom|ndd|d64|bin|elf)$' \
+            -e '(^|/)assets/' \
+            -e '(^|/)(decomp|decompile|decompiled|disasm|disassembly|workspaces?|splat_out|asm|nonmatchings|extracted)/' \
+            -e '[_-](decomp|disasm)/' \
+          || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Original game data or decompile output must not be committed:"
+            echo "$bad"
+            exit 1
+          fi
+
+          # Catch renamed ROMs by their N64 header magic (z64 / v64 / n64 byte orders)
+          found=""
+          while IFS= read -r f; do
+            [ -f "$f" ] || continue
+            magic=$(head -c 4 "$f" | od -An -tx1 | tr -d ' \n')
+            case "$magic" in
+              80371240|37804012|40123780) found="$found$f\n" ;;
+            esac
+          done < <(git ls-files)
+          if [ -n "$found" ]; then
+            echo "::error::Files with an N64 ROM header were found:"
+            printf "$found"
+            exit 1
+          fi
+          echo "Clean: no game data in the repository."
