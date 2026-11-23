@@ -1,0 +1,196 @@
+UN64 Patcher - Supported Games by Feature
+=========================================
+Updated 2026-11-23. 46 games can be patched; 4 more are recognised but not patchable yet.
+All ROMs must be unmodified USA dumps (.z64, .v64 or .n64). Where a specific revision is
+needed it is shown in brackets, e.g. (Rev 1). The original ROM is never changed - the
+patched copy is saved next to it, or in the folder chosen with the Destination button.
+
+All patches are EXPERIMENTAL and untested on real hardware unless noted otherwise.
+
+
+1. ASPECT RATIO: 3:2, 16:10, 16:9 and 21:9  (27 games)
+-------------------------------------------------------
+The 3D camera is widened to the chosen aspect. Set your TV / emulator / Analogue 3D to
+stretch the picture to the same aspect. HUD and 2D art are stretched along with it.
+
+  1080 Snowboarding
+  Banjo-Kazooie                        (original 1.0 release)
+  Castlevania: Legacy of Darkness
+  Clay Fighter 63 1/3
+  Conker's Bad Fur Day
+  Diddy Kong Racing                    (Rev 1)
+  Gex 3: Deep Cover Gecko
+  GoldenEye 007
+  Harvest Moon 64
+  Hydro Thunder
+  Jet Force Gemini
+  Killer Instinct Gold                 (Rev 2)
+  Legend of Zelda: Ocarina of Time     (1.0)   - a few menu/overlay views stay 4:3
+  Mario Kart 64
+  Mega Man 64
+  Mystical Ninja Starring Goemon
+  Ogre Battle 64                       (Rev 1)
+  Perfect Dark                         (Rev 1)
+  Re-Volt
+  Star Fox 64
+  Star Wars: Rogue Squadron            (Rev 1)
+  Super Mario 64
+  Super Smash Bros.
+  Superman 64
+  Wave Race 64                         (Rev 1)
+  Wipeout 64
+  Yoshi's Story
+
+16:9 only:
+  Mortal Kombat Trilogy                (Rev 2) - 424x240 16:9 rework with 480i output.
+                                        Needs an Expansion Pak. Not available at 4:3,
+                                        3:2, 16:10 or 21:9.
+
+Built-in widescreen (not patched by UN64 - use the game's own setting):
+  Banjo-Tooie                          - Settings -> Wide-Screen Mode
+
+
+2. ASPECT RATIO: 4:3 (original)  (44 games)
+--------------------------------------------
+Keeps the game's own 4:3 picture and only applies the Resolution and/or Frame rate options
+you pick. Works for every game in sections 3 and 4. Not available for Perfect Dark (it has
+no resolution or frame-rate patch yet) or Mortal Kombat Trilogy (16:9 only). Choosing
+4:3 + Original resolution + Original frame rate leaves a ROM unchanged, so no file is made.
+
+
+3. RESOLUTION: 360p, 360i, 480i and 540i  (44 games)
+----------------------------------------------------
+480i: the game's video modes are switched to their interlaced 480i twins (the picture is
+still drawn at 240 lines). 360p / 360i / 540i are EXPERIMENTAL re-scaled modes with a
+non-standard refresh, built for the Analogue 3D's scaler - a plain TV may not sync.
+"Original" leaves the video mode unchanged.
+
+  1080 Snowboarding
+  Banjo-Kazooie                        (original 1.0 release)
+  Banjo-Tooie
+  Castlevania: Legacy of Darkness
+  Clay Fighter 63 1/3
+  Conker's Bad Fur Day
+  Cruis'n USA                          (Rev 2)
+  Diddy Kong Racing                    (Rev 1)
+  Donkey Kong 64
+  F-Zero X
+  Gex 3: Deep Cover Gecko
+  GoldenEye 007                        - its video data is repacked (takes a few seconds)
+  Harvest Moon 64
+  Hydro Thunder
+  Jet Force Gemini
+  Killer Instinct Gold                 (Rev 2) - boot logos / menus; fights already run at 480i
+  Kirby 64: The Crystal Shards
+  Legend of Zelda: Majora's Mask
+  Legend of Zelda: Ocarina of Time     (1.0)
+  Mario Kart 64
+  Mega Man 64
+  Mischief Makers                      (Rev 1)
+  Mystical Ninja Starring Goemon
+  Ogre Battle 64                       (Rev 1)
+  Paper Mario
+  Re-Volt
+  Resident Evil 2                      (Rev 1)
+  Ridge Racer 64 (RR64)
+  Road Rash 64
+  San Francisco Rush: Extreme Racing   (Rev 1)
+  Shadow Man
+  Star Fox 64
+  Star Wars Episode I: Racer
+  Star Wars: Rogue Squadron            (Rev 1)
+  Super Mario 64
+  Super Smash Bros.
+  Superman 64
+  Tarzan
+  Turok 2: Seeds of Evil               (Rev 1)
+  Turok 3: Shadow of Oblivion
+  Turok: Rage Wars                     (Rev 1)
+  Wave Race 64                         (Rev 1)
+  Wipeout 64
+  Yoshi's Story
+
+480i only:
+  Mortal Kombat Trilogy                (Rev 2) - always 480i, part of its 16:9 patch
+
+Not available yet:
+  Perfect Dark                         - its video mode is set at run time; widescreen only
+
+
+4. FRAME RATE: up to 60 fps / up to 40 fps  (5 games)
+------------------------------------------------------
+Raises how often the game presents a new frame. The ~60 Hz video retrace is the ceiling,
+so overclocking (e.g. Analogue 3D Unleashed) helps the game reach the target but never
+exceed it. Most games run their logic once per frame, so they also run faster as the frame
+rate climbs (Mario Kart 64 is the exception). Up to 40 fps is the gentler option.
+
+                                       60 fps   40 fps
+  Diddy Kong Racing   (Rev 1)            yes      yes
+  Gex 3: Deep Cover Gecko                yes      -
+  Mario Kart 64                          yes      -     game speed stays correct at 60;
+                                                        music may play fast
+  Star Fox 64                            yes      yes
+  Yoshi's Story                          yes      -
+
+
+5. RECOGNISED BUT NOT PATCHABLE YET  (4 games)
+----------------------------------------------
+The patcher identifies these and leaves the file unchanged.
+
+  Quake II                             - the ROM already outputs 480i; no widescreen yet
+  Star Wars: Shadows of the Empire     - video-mode data is inside packed data
+  Turok: Dinosaur Hunter               - video-mode data is inside packed data
+  (Perfect Dark's 480i - see section 3)
+
+
+QUICK REFERENCE
+---------------
+Game                                   Aspect           Resolution   Frame rate
+1080 Snowboarding                      all              all          -
+Banjo-Kazooie                          all              all          -
+Banjo-Tooie                            own setting      all          -
+Castlevania: Legacy of Darkness        all              all          -
+Clay Fighter 63 1/3                    all              all          -
+Conker's Bad Fur Day                   all              all          -
+Cruis'n USA                            4:3              all          -
+Diddy Kong Racing                      all              all          60 / 40
+Donkey Kong 64                         4:3              all          -
+F-Zero X                               4:3              all          -
+Gex 3: Deep Cover Gecko                all              all          60
+GoldenEye 007                          all              all          -
+Harvest Moon 64                        all              all          -
+Hydro Thunder                          all              all          -
+Jet Force Gemini                       all              all          -
+Killer Instinct Gold                   all              all          -
+Kirby 64: The Crystal Shards           4:3              all          -
+Legend of Zelda: Majora's Mask         4:3              all          -
+Legend of Zelda: Ocarina of Time       all              all          -
+Mario Kart 64                          all              all          60
+Mega Man 64                            all              all          -
+Mischief Makers                        4:3              all          -
+Mortal Kombat Trilogy                  16:9 only        480i only    -
+Mystical Ninja Starring Goemon         all              all          -
+Ogre Battle 64                         all              all          -
+Paper Mario                            4:3              all          -
+Perfect Dark                           3:2 to 21:9      -            -
+Re-Volt                                all              all          -
+Resident Evil 2                        4:3              all          -
+Ridge Racer 64 (RR64)                  4:3              all          -
+Road Rash 64                           4:3              all          -
+San Francisco Rush: Extreme Racing     4:3              all          -
+Shadow Man                             4:3              all          -
+Star Fox 64                            all              all          60 / 40
+Star Wars Episode I: Racer             4:3              all          -
+Star Wars: Rogue Squadron              all              all          -
+Super Mario 64                         all              all          -
+Super Smash Bros.                      all              all          -
+Superman 64                            all              all          -
+Tarzan                                 4:3              all          -
+Turok 2: Seeds of Evil                 4:3              all          -
+Turok 3: Shadow of Oblivion            4:3              all          -
+Turok: Rage Wars                       4:3              all          -
+Wave Race 64                           all              all          -
+Wipeout 64                             all              all          -
+Yoshi's Story                          all              all          60
+
+"all" aspect = 4:3, 3:2, 16:10, 16:9, 21:9.  "all" resolution = Original, 360p, 360i, 480i, 540i.
