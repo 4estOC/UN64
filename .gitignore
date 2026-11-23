@@ -1,13 +1,24 @@
 # ------------------------------------------------------------------
 # UN64 — never commit original game data or decompilation output.
-# Only the patcher's own source, docs and patch definitions belong here.
+#
+# This is an ALLOW-LIST: everything at the top level is ignored except
+# the patcher's own files below. Per-game decompile folders (sm64/, oot/,
+# bk/, ...), Assets/ (ROM dumps), tools/, widescreen/ and anything added
+# later stay out automatically.
 # ------------------------------------------------------------------
 
-# Original game assets (ROM dumps live in G:\ClaudeDecomp\Assets)
-Assets/
-assets/
+/*
+!/.gitignore
+!/.github/
+!/src/
+!/README.md
+!/LICENSE
+!/Supported Games.txt
+!/UN64 Patcher.exe
 
-# N64 ROM images (original or patched) and common archives of them
+# ---- Even inside allowed folders, never commit game data ----
+
+# N64 ROM images (original or patched), disk images, archives
 *.z64
 *.Z64
 *.n64
@@ -22,7 +33,14 @@ assets/
 *.7z
 *.rar
 
-# Save data / emulator state derived from games
+# Firmware / raw binaries / build objects
+*.bin
+*.elf
+*.o
+*.ld
+*.map
+
+# Save data / emulator state
 *.eep
 *.sra
 *.fla
@@ -30,39 +48,16 @@ assets/
 *.st[0-9]
 *.state
 
-# Decompile / disassembly workspaces and their output
-decomp/
-decompile/
-decompiled/
-disasm/
-disassembly/
-*_decomp/
-*-decomp/
-*_disasm/
-*-disasm/
-workspaces/
-workspace/
-splat_out/
-asm/
-nonmatchings/
-*.bin
-*.elf
-*.o
-*.ld
-*.map
+# Disassembly output
+*.s
+*.asm
 
-# Extracted game assets (textures, audio, models, text)
-extracted/
-*.png.bin
-*.ctl
-*.tbl
+# Build output inside src
+src/*.exe
 
-# Build output / local tooling
-build/
-dist/
-*.exe~
-.vscode/
-.idea/
+# OS / editor clutter
 Thumbs.db
 desktop.ini
 .DS_Store
+.vscode/
+.idea/

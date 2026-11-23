@@ -13,21 +13,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Reject ROMs, assets and decompile folders
+      - name: Only allowed top-level paths
         run: |
-          bad=$(git ls-files | grep -Ei \
-            -e '\.(z64|n64|v64|rom|ndd|d64|bin|elf)$' \
-            -e '(^|/)assets/' \
-            -e '(^|/)(decomp|decompile|decompiled|disasm|disassembly|workspaces?|splat_out|asm|nonmatchings|extracted)/' \
-            -e '[_-](decomp|disasm)/' \
+          bad=$(git ls-files | grep -Ev \
+            -e '^\.gitignore$' \
+            -e '^\.github/' \
+            -e '^src/' \
+            -e '^README\.md$' \
+            -e '^LICENSE$' \
+            -e '^Supported Games\.txt$' \
+            -e '^UN64 Patcher\.exe$' \
           || true)
           if [ -n "$bad" ]; then
-            echo "::error::Original game data or decompile output must not be committed:"
+            echo "::error::Files outside the allowed paths (decompile folders, assets, notes?):"
             echo "$bad"
             exit 1
           fi
 
-          # Catch renamed ROMs by their N64 header magic (z64 / v64 / n64 byte orders)
+      - name: No ROMs, firmware or disassembly
+        run: |
+          bad=$(git ls-files | grep -Ei '\.(z64|n64|v64|rom|ndd|d64|bin|elf|s|asm|zip|7z|rar)$' || true)
+          if [ -n "$bad" ]; then
+            echo "::error::Game data / disassembly files must not be committed:"
+            echo "$bad"
+            exit 1
+          fi
+
+      - name: No renamed ROMs (N64 header check)
+        run: |
           found=""
           while IFS= read -r f; do
             [ -f "$f" ] || continue
