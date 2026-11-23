@@ -4,9 +4,11 @@ Unleashed 64 is a project to run all N64 games Unleashed on overclocked hardware
 
 ## ⬇️ Download UN64 Patcher v0.046
 
-**[Download UN64 Patcher.exe](https://github.com/4estOC/UN64/releases/latest/download/UN64.Patcher.exe)** · [All releases](https://github.com/4estOC/UN64/releases) · [Supported games](Supported%20Games.txt)
+**[Download UN64 Patcher.exe](https://github.com/4estOC/UN64/raw/main/UN64%20Patcher.exe)** · [Supported games](Supported%20Games.txt)
 
 A standalone Windows app (Windows 7 or later, 64-bit). No installer and nothing else to download: run the exe.
+
+Windows SmartScreen may warn the first time because the exe isn't code-signed: click **More info → Run anyway**.
 
 ## What it does
 
